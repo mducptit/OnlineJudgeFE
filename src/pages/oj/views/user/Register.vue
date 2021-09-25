@@ -74,6 +74,13 @@
           }
         }, _ => callback())
       }
+      const CheckInvalid = (rule, value, callback) => {
+        const regex = new RegExp(/^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/)
+        if (!regex.test(this.formRegister.username)) {
+          callback(new Error('Invalid Username!'))
+        }
+        callback()
+      }
       const CheckEmailNotExist = (rule, value, callback) => {
         api.checkUsernameOrEmail(undefined, value).then(res => {
           if (res.data.data.email === true) {
@@ -110,7 +117,8 @@
         ruleRegister: {
           username: [
             {required: true, trigger: 'blur'},
-            {validator: CheckUsernameNotExist, trigger: 'blur'}
+            {validator: CheckUsernameNotExist, trigger: 'blur'},
+            {validator: CheckInvalid, trigger: 'blur'}
           ],
           email: [
             {required: true, type: 'email', trigger: 'blur'},
