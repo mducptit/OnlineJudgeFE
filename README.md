@@ -22,52 +22,14 @@ Install Node.JS **v12.16.1** first.
 npm install
 # we use webpack DllReference to decrease the build time,
 # this command only needs execute once unless you upgrade the package in build/webpack.dll.conf.js
-export NODE_ENV=development 
-npm run build:dll
+NODE_ENV=development npm run build:dll
+
+# Small language fixed
+cp node_modules/echarts/lib/langEN.js node_modules/echarts/lib/lang.js 
 
 # the dev-server will set proxy table to your backend
-export TARGET=http://Your-backend
+TARGET=https://ptithcm.com npm run dev
 
 # serve with hot reload at localhost:8080
 npm run dev
-```
-### Windows
-
-```bash
-npm install
-# we use webpack DllReference to decrease the build time,
-# this command only needs execute once unless you upgrade the package in build/webpack.dll.conf.js
-set NODE_ENV=development 
-npm run build:dll
-
-# the dev-server will set proxy table to your backend
-set TARGET=http://Your-backend
-
-# serve with hot reload at localhost:8080
-npm run dev
-```
-
-## Screenshots
-
-[Check here.](https://github.com/QingdaoU/OnlineJudge)
-
-## Browser Support
-
-Modern browsers and Internet Explorer 10+.
-
-## LICENSE
-
-[MIT](http://opensource.org/licenses/MIT)
-
-## Attention
-
-```
-#custom JavaScript or CSS   自定义JavaScript/CSS
-./src/styles
-
-#page    修改界面
-./src/pages
-
-#language    语言文件
-./src/i18n
 ```
